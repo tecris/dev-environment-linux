@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# git clone git@github.com:tecris/dev-linux.git
 
 sudo apt-get install -y software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install -y ansible
+
+# wget https://github.com/tecris/dev-linux/archive/master.zip
 
 # sudo su - 
 # echo -e '[local]\nlocalhost\n' >> /etc/ansible/hosts
