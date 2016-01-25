@@ -7,14 +7,8 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install -y ansible
 
-git config --global user.email "eugen@cristea.org"
-git config --global user.name "Eugen Cristea"
-
-sudo usermod -aG docker tecris
-
 # sudo su - 
 # echo -e '[local]\nlocalhost\n' >> /etc/ansible/hosts
 # cat /etc/ansible/hosts 
 # sudo ansible-playbook playbook.yml -c local
-# sudo usermod -aG docker tecris
 
