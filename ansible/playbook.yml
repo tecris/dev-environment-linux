@@ -28,9 +28,9 @@
       copy: src=files/ssh_config dest=/home/{{username}}/.ssh/config owner={{username}} mode=0644
     - name: ftp config
       copy: src=files/netrc dest=/home/{{username}}/.netrc owner={{username}} mode=0644
-    - name: Configure docker to use local repository
+    - name: Configure hosts
       lineinfile:
-        dest: /etc/default/docker
+        dest: /etc/hosts
         line: "{{ item.line }}"
       with_items:
         - { line: ''}
