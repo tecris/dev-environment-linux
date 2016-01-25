@@ -9,17 +9,18 @@
     }
     - { role: ansible-java, java_oracle_version: 8u66 }
     - { role: ansible-maven }
+    - { role: ansible-role-git }
   tasks:
     - name: Configure docker for given user
       action: shell sudo usermod -aG docker tecris
+    - name: Configure git email
       action: shell git config --global user.email "eugen@cristea.org"
+    - name: Configure git user
       action: shell git config --global user.name "Eugen Cristea"
     - name: Installs tree
       apt: pkg=cryptsetup state=installed update_cache=true
     - name: Installs cryptsetup package
       apt: pkg=tree state=installed update_cache=true
-    - name: Installs git
-      apt: pkg=git state=installed update_cache=true
     - name: screen configuration file
       copy: src=files/screenrc dest=/home/{{username}}/.screenrc owner={{username}} mode=0644
     - name: vim configuration file
