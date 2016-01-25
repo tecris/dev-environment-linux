@@ -1,4 +1,5 @@
 - hosts: all
+  sudo: true
   vars:
     username: tecris
   roles:
@@ -9,6 +10,10 @@
     - { role: ansible-java, java_oracle_version: 8u66 }
     - { role: ansible-maven }
   tasks:
+    - name: Configure docker for given user
+      action: shell sudo usermod -aG docker tecris
+      action: shell git config --global user.email "eugen@cristea.org"
+      action: shell git config --global user.name "Eugen Cristea"
     - name: Installs tree
       apt: pkg=cryptsetup state=installed update_cache=true
     - name: Installs cryptsetup package
@@ -23,3 +28,11 @@
       copy: src=files/ssh_config dest=/home/{{username}}/.ssh/config owner={{username}} mode=0644
     - name: ftp config
       copy: src=files/netrc dest=/home/{{username}}/.netrc owner={{username}} mode=0644
+    - name: Configure docker to use local repository
+      lineinfile:
+        dest: /etc/default/docker
+        line: "{{ item.line }}"
+      with_items:
+        - { line: ''}
+        - { line: '127.0.1.1       registry.mirror' }
+        - { line: '172.17.0.1      blue.sky' }
