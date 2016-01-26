@@ -1,5 +1,6 @@
 - hosts: all
-  sudo: true
+  become: true
+  become_method: sudo
   vars:
     username: tecris
   roles:
@@ -11,10 +12,10 @@
     - { role: ansible-maven }
     - { role: ansible-role-git }
   tasks:
-    - name: Configure docker for given user
-      action: shell sudo usermod -aG docker tecris
+    - name: Avoid using sudo when using docker command
+      command: usermod -aG docker tecris
     - name: Configure git email
-      action: shell git config --global user.email "eugen@cristea.org"
+      command: git config --global user.email "eugen@cristea.org"
     - name: Configure git user
       action: shell git config --global user.name "Eugen Cristea"
     - name: Installs tree
