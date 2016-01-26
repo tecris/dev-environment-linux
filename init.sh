@@ -8,6 +8,9 @@ sudo apt-get install -y ansible
 
 # wget https://github.com/tecris/dev-linux/archive/master.zip
 
+# sudo ansible-playbook -i hosts playbook.yml -c local
+#
+# or,
 # sudo su - 
 # echo -e '[local]\nlocalhost\n' >> /etc/ansible/hosts
 # cat /etc/ansible/hosts 
