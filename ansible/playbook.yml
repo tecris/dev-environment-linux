@@ -26,6 +26,9 @@
       copy: src=files/screenrc dest=/home/{{username}}/.screenrc owner={{username}} mode=0644
     - name: vim configuration file
       copy: src=files/vimrc dest=/home/{{username}}/.vimrc owner={{username}} mode=0644
+    - file: path=/home/{{username}}/.m2 owner={{username}} group={{username}} state=directory mode=0775
+    - name: maven settings.xml
+      copy: src=files/settings.xml dest=/home/{{username}}/.m2/settings.xml owner={{username}} mode=0644
     - file: path=/home/{{username}}/.ssh owner={{username}} group={{username}} state=directory mode=0700
     - name: ssh config
       copy: src=files/ssh_config dest=/home/{{username}}/.ssh/config owner={{username}} mode=0644
