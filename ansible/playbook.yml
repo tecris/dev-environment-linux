@@ -13,6 +13,7 @@
     - { role: ansible-role-git }
   tasks:
     # Add user only when testing in docker
+    - name: Add user
     - user: name={{username}}
       tags:
         - only-on-docker
