@@ -12,8 +12,12 @@
     - { role: ansible-maven }
     - { role: ansible-role-git }
   tasks:
+    # Add user only when testing in docker
+    - user: name={{username}}
+      tags:
+        - only-on-docker
     - name: Avoid using sudo when using docker command
-      command: usermod -aG docker tecris
+      command: usermod -aG docker {{username}}
     - name: Configure git email
       command: git config --global user.email "eugen@cristea.org"
     - name: Configure git user
@@ -34,6 +38,7 @@
       copy: src=files/ssh_config dest=/home/{{username}}/.ssh/config owner={{username}} mode=0644
     - name: ftp config
       copy: src=files/netrc dest=/home/{{username}}/.netrc owner={{username}} mode=0644
+    # cannot edit /etc/hosts with ansible 
     - name: Configure hosts
       lineinfile:
         dest: /etc/hosts
@@ -42,3 +47,5 @@
         - { line: ''}
         - { line: '127.0.1.1       registry.mirror' }
         - { line: '172.17.0.1      blue.sky' }
+      tags:
+        - no-docker

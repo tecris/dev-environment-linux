@@ -12,4 +12,4 @@ RUN apt-get install -y curl git apt-transport-https
 ADD ansible /opt/ansible
 WORKDIR /opt/ansible
 
-RUN ansible-playbook playbook.yml -c local
+RUN ansible-playbook playbook.yml -c local --skip-tags "no-docker"

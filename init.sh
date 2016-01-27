@@ -8,7 +8,7 @@ sudo apt-get install -y ansible
 
 # wget https://github.com/tecris/dev-linux/archive/master.zip
 
-# sudo ansible-playbook -i hosts playbook.yml -c local
+# sudo ansible-playbook -i hosts playbook.yml -c local --skip-tags "only-on-docker"
 #
 # or,
 # sudo su - 
