@@ -12,11 +12,13 @@
     - { role: ansible-maven }
     - { role: ansible-role-git }
   tasks:
-    # Add user only when testing in docker
+    # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
     - name: Add user
-    - user: name={{username}}
+      user: name={{username}}
       tags:
         - only-on-docker
+    - name: Installs vim package
+      apt: pkg=vim state=installed update_cache=true
     - name: Avoid using sudo when using docker command
       command: usermod -aG docker {{username}}
     - name: Configure git email
@@ -39,7 +41,7 @@
       copy: src=files/ssh_config dest=/home/{{username}}/.ssh/config owner={{username}} mode=0644
     - name: ftp config
       copy: src=files/netrc dest=/home/{{username}}/.netrc owner={{username}} mode=0644
-    # cannot edit /etc/hosts with ansible 
+    # task marked with tag to be excluded from execution when running in docker ( cannot edit /etc/hosts with ansible )
     - name: Configure hosts
       lineinfile:
         dest: /etc/hosts
