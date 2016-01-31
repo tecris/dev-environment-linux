@@ -25,6 +25,8 @@
       command: git config --global user.email "eugen@cristea.org"
     - name: Configure git user
       action: shell git config --global user.name "Eugen Cristea"
+    - name: Configure git editor to vim
+      command: git config --global core.editor "vim"
     - name: Installs tree
       apt: pkg=cryptsetup state=installed update_cache=true
     - name: Installs cryptsetup package
