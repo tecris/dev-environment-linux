@@ -4,13 +4,13 @@
   vars:
     username: tecris
   roles:
-    - { role: ansible-screen }
-    - { role: docker.ubuntu,
+    - { role: tersmitten.screen }
+    - { role: angstwad.docker_ubuntu,
       docker_opts: "-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000"
     }
     - { role: williamyeh.oracle-java, java_version: 8, java_subversion: 72 }
     - { role: ansible-maven }
-    - { role: ansible-role-git }
+    - { role: geerlingguy.git }
   tasks:
     # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
     - name: Add user
