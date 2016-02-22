@@ -12,7 +12,6 @@
       docker_opts: "-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000"
     }
     - { role: geerlingguy.git }
-    - { role: geerlingguy.ruby }
   tasks:
     # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
     - name: Add user

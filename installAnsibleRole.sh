@@ -5,6 +5,5 @@ ansible-galaxy install \
         williamyeh.nodejs \
         angstwad.docker_ubuntu \
         geerlingguy.git \
-        geerlingguy.ruby \
         tecris.maven \
         tersmitten.screen
