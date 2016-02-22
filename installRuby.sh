@@ -16,6 +16,5 @@ sudo gem install rails -v 4.2.4
 
 # pg gem - postgresql
 
-postgresql gem
 sudo apt-get install -y libpq-dev
 sudo gem install pg -v 0.18.4
