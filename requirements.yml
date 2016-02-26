@@ -1,0 +1,7 @@
+---
+- src: williamyeh.oracle-java
+- src: williamyeh.nodejs
+- src: angstwad.docker_ubuntu
+- src: geerlingguy.git
+- src: tecris.maven
+- src: tersmitten.screen

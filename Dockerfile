@@ -13,8 +13,8 @@ FROM casadocker/ansible
 RUN apt-get -y update
 RUN apt-get install -y curl git apt-transport-https
 
-ADD installAnsibleRole.sh /opt/installAnsibleRole.sh
-RUN /opt/installAnsibleRole.sh
+ADD requirements.yml /opt/requirements.yml
+RUN ansible-galaxy install -r /opt/requirements.yml
 
 ADD ansible /opt/ansible
 WORKDIR /opt/ansible
