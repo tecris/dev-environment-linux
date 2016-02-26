@@ -19,6 +19,6 @@
   * [Packer](http://www.packer.io) v0.9
   * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-apt-ubuntu) v2.0
 
-  * It has a two step process
+  * Steps
    1. [Build](packer-ubuntu/README.md) ubutu base image
-   2. `$ ./buildVagrant.sh`
+   2. Add packages to base image `$ ./buildVagrant.sh`
