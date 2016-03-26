@@ -20,7 +20,7 @@
   * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-apt-ubuntu) v2.0
 
   * Build vagrant box
-    1. [Build](packer-ubuntu/README.md) ubutu base image
+    1. [Build](packer-ubuntu/README.md) ubuntu base image
     2. Add packages to base image `$ ./buildVagrant.sh`
 
 * Start box/image
