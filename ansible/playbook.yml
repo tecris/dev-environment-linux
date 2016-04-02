@@ -28,9 +28,9 @@
       action: shell git config --global user.name "Eugen Cristea"
     - name: Configure git editor to vim
       command: git config --global core.editor "vim"
-    - name: Installs tree
+    - name: Install cryptsetup
       apt: pkg=cryptsetup state=installed update_cache=true
-    - name: Installs cryptsetup package
+    - name: Install tree package
       apt: pkg=tree state=installed update_cache=true
     - name: screen configuration file
       copy: src=files/screenrc dest=/home/{{username}}/.screenrc owner={{username}} mode=0644
