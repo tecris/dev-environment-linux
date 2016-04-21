@@ -19,9 +19,11 @@
   * [Packer](http://www.packer.io) v0.9
   * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-apt-ubuntu) v2.0
 
-#### Build vagrant box
-    1. [Build](packer-ubuntu/README.md) ubuntu base image
-    2. Add packages to base image `$ ./buildVagrant.sh`
+#### Build vagrant box:
+
+  1. [Build](packer-ubuntu/README.md) ubuntu base image
+  1. `$ ./buildVagrant.sh # Add packages to base image`
 
 #### Start box/image
-    1. `$ cd demo && vagrant up`
+  1. `$ cd demo`
+  1. `$ vagrant up`
