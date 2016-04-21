@@ -1,4 +1,4 @@
-## Ubuntu 14.04 Development environment by Ansible
+## Ubuntu 14.04 development environment by Ansible
 
 [**Docker - way**](#with-docker)
 
