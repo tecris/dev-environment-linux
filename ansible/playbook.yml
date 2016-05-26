@@ -7,7 +7,7 @@
     - { role: williamyeh.oracle-java, java_version: 8, java_subversion: 72 }
     - { role: tecris.maven, maven_major: 3, maven_version: 3.3.9 }
     - { role: tersmitten.screen }
-    - { role: williamyeh.nodejs, nodejs_compile: False, nodejs_default_in_apt: "4.3"}
+    - { role: nodesource.node }
     - { role: angstwad.docker_ubuntu,
       docker_opts: "-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000"
     }
