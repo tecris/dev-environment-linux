@@ -4,7 +4,7 @@
   vars:
     username: tecris
   roles:
-    - { role: williamyeh.oracle-java, java_version: 8, java_subversion: 72 }
+    - { role: williamyeh.oracle-java, java_version: 8 }
     - { role: tecris.maven, maven_major: 3, maven_version: 3.3.9 }
     - { role: tersmitten.screen }
     - { role: nodesource.node }
