@@ -4,11 +4,18 @@
 
 [**Vagrant - way**](#with-vagrant)
 
+### Bare Ubuntu
+---
+ - one liner:
+   * `$ ./bareUbuntu.sh`
+
 ### With Docker
+---
  - Basically this is just to test on a clean machine.
    * `$ docker build --no-cache -t casadocker/dev-linux .`
 
 ### With Vagrant
+---
  - If mother nature decides I have to work on a Windows machine that has VirtualBox
 
 #### Pre-requisites:
