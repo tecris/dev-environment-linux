@@ -1,4 +1,5 @@
 ## Ubuntu 14.04 development environment by Ansible
+[**Bare Ubuntu**](#bare-ubuntu)
 
 [**Docker - way**](#with-docker)
 
