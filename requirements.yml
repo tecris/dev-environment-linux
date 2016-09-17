@@ -1,6 +1,6 @@
 ---
 - src: williamyeh.oracle-java
-- src: nodesource.node
+- src: geerlingguy.nodejs
 - src: angstwad.docker_ubuntu
 - src: geerlingguy.git
 - src: tecris.maven
