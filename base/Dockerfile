@@ -1,10 +1,10 @@
 ################################################################################
 #
 # .) Build
-# docker build -t casadocker/dev-linux .
-# docker build --no-cache -t casadocker/dev-linux .
+# docker build -t casadocker/dev-linux-base .
+# docker build --no-cache -t casadocker/dev-linux-base .
 # .) Run
-# docker run --name dev-linux -it casadocker/dev-linux bash
+# docker run --name dev-linux -it casadocker/dev-linux-base bash
 #
 ################################################################################
 

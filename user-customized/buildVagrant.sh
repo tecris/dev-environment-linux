@@ -7,7 +7,7 @@ vagrant up
 vagrant halt
 
 # package box
-vagrant package --output ubuntu-16.04-desktop-amd64-java-dev-base.box
+vagrant package --output ubuntu-16.04-desktop-amd64-java-dev.box
 
 # add box to vagrant repository (needed for next step, user configuration)
-vagrant box add ubuntu-16.04-desktop-amd64-java-dev-base ubuntu-16.04-desktop-amd64-java-dev-base.box 
+vagrant box add ubuntu-16.04-desktop-amd64-java-dev ubuntu-16.04-desktop-amd64-java-dev.box 

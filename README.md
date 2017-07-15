@@ -1,4 +1,4 @@
-## Ubuntu 14.04 development environment by Ansible
+## Ubuntu 16.04 development environment built with Ansible & Vagrant
 [**Bare Ubuntu**](#bare-ubuntu)
 
 [**Docker - way**](#with-docker)
@@ -12,8 +12,9 @@
 
 ### With Docker
 ---
- - Basically this is just to test on a clean machine.
-   * `$ docker build --no-cache -t casadocker/dev-linux .`
+ - This is just to test a clean/fresh install.
+   * `$ docker build --no-cache -t casadocker/dev-linux-base base`
+   * `$ docker build --no-cache -t casadocker/dev-linux user-customized`
 
 ### With Vagrant
 ---
@@ -21,16 +22,14 @@
 
 #### Pre-requisites:
 
-  * [Ubuntu 14.04.3 Desktop x64 iso image](http://www.ubuntu.com) v14.04.3
   * [Oracle VM VirtualBox](http://www.virtualbox.org) & [Guest Additions](https://www.virtualbox.org/manual/ch04.html) v5.0.14
-  * [Vagrant](http://www.vagrantup.com) v1.8.1
-  * [Packer](http://www.packer.io) v0.9
+  * [Vagrant](http://www.vagrantup.com) v1.9.1
   * [Ansible](http://docs.ansible.com/intro_installation.html#latest-releases-via-apt-ubuntu) v2.0
 
 #### Build vagrant box:
 
-  1. [Build](packer-ubuntu/README.md) ubuntu base image
-  1. `$ ./buildVagrant.sh # Add packages to base image`
+  1. Build base vagrant box, see `base/buildVagrant.sh`
+  1. Add user to base image, see `user-customized/buildVagrant.sh`
 
 #### Start box/image
   1. `$ cd demo`
