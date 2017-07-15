@@ -8,4 +8,4 @@ sudo apt-get install -y ansible
 sudo ansible-galaxy install -r requirements.yml
 
 sudo ansible-playbook -i base/ansible/hosts base/ansible/playbook.yml -c local --skip-tags "only-on-docker"
-sudo ansible-playbook -i user-customized/ansible/hosts user-customized/ansible/playbook.yml -c local --skip-tags "only-on-docker"
+sudo ansible-playbook -i user-customized/ansible/hosts user-customized/ansible/playbook.yml -c local --skip-tags "only-on-docker,create-user"
