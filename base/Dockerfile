@@ -11,7 +11,7 @@
 FROM casadocker/ansible
 
 RUN apt-get -y update
-RUN apt-get install -y curl git apt-transport-https
+RUN apt-get install -y curl git apt-transport-https sudo
 
 ADD requirements.yml /opt/requirements.yml
 RUN ansible-galaxy install -r /opt/requirements.yml

@@ -6,7 +6,7 @@
     - { role: tecris.maven, maven_major: 3, maven_version: 3.3.9 }
     - { role: gantsign.terminator }
     - { role: angstwad.docker_ubuntu,
-      docker_opts: "-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000"
+      docker_opts: "-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000", tags: ['no-docker']
     }
     - { role: geerlingguy.git }
   tasks:
