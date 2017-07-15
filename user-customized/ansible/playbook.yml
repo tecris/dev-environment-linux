@@ -4,7 +4,6 @@
   vars:
     username: tecris
   tasks:
-    # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
     - name: Add user
       user: name={{username}}
         shell=/bin/bash
