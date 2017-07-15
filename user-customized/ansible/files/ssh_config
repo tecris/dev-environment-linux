@@ -1,0 +1,25 @@
+Host zbc
+  HostName ec9-94-227-182-17.compute-n.amazonaws.com
+  User ubuntu
+  IdentityFile "~/.ssh/zbc.pem"
+
+Host k8-master
+  HostName 192.168.122.10
+  User core
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  LogLevel=quiet
+
+Host k8-node-01
+  HostName 192.168.122.51
+  User core
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  LogLevel=quiet
+
+Host k8-node-02
+  HostName 192.168.122.52
+  User core
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  LogLevel=quiet

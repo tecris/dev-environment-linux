@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu-14.04.3-desktop-amd64-base"
+  config.vm.box = "boxcutter/ubuntu1604-desktop"
   
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "ansible/playbook.yml"

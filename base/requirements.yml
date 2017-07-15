@@ -1,0 +1,6 @@
+---
+- src: angstwad.docker_ubuntu
+- src: geerlingguy.git
+- src: tecris.maven
+- src: gantsign.terminator
+- src: ansiblebit.oracle-java

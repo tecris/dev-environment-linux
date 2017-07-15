@@ -3,21 +3,10 @@
   become_method: sudo
   vars:
     username: tecris
-  roles:
-    - { role: williamyeh.oracle-java, java_version: 8 }
-    - { role: tecris.maven, maven_major: 3, maven_version: 3.3.9 }
-    - { role: tersmitten.screen }
-    - { role: geerlingguy.nodejs, nodejs_version: 6.x }
-    - { role: angstwad.docker_ubuntu,
-      docker_opts: "-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000"
-    }
-    - { role: geerlingguy.git }
   tasks:
     # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
     - name: Add user
       user: name={{username}}
-      tags:
-        - only-on-docker
     - name: Installs vim package
       apt: pkg=vim state=installed update_cache=true
     - name: Avoid using sudo when using docker command
@@ -32,8 +21,6 @@
       apt: pkg=cryptsetup state=installed update_cache=true
     - name: Install tree package
       apt: pkg=tree state=installed update_cache=true
-    - name: screen configuration file
-      copy: src=files/screenrc dest=/home/{{username}}/.screenrc owner={{username}} mode=0644
     - name: vim configuration file
       copy: src=files/vimrc dest=/home/{{username}}/.vimrc owner={{username}} mode=0644
     - file: path=/home/{{username}}/.m2 owner={{username}} group={{username}} state=directory mode=0775

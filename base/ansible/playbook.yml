@@ -1,0 +1,17 @@
+- hosts: all
+  become: true
+  become_method: sudo
+  roles:
+    - { role: ansiblebit.oracle-java, oracle_java_version: 8 }
+    - { role: tecris.maven, maven_major: 3, maven_version: 3.3.9 }
+    - { role: gantsign.terminator }
+    - { role: angstwad.docker_ubuntu,
+      docker_opts: "-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --registry-mirror=https://registry.mirror:5000"
+    }
+    - { role: geerlingguy.git }
+  tasks:
+    # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
+    - name: Installs vim package
+      apt: pkg=vim state=installed update_cache=true
+    - name: Configure git editor to vim
+      command: git config --global core.editor "vim"
