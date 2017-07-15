@@ -7,6 +7,10 @@
     # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
     - name: Add user
       user: name={{username}}
+        shell=/bin/bash
+        password=$6$FLNb9AGuw/2h7k$F1gUtBSLcbx1R3pw1Hou0EVNNNufutwow1kJLijPkc2lUFWAcPTqBBwOYcr7VZ16UDLc6Nb284zJGzQqq0Gfd0
+        groups=sudo
+        append=yes
     - name: Installs vim package
       apt: pkg=vim state=installed update_cache=true
     - name: Avoid using sudo when using docker command
