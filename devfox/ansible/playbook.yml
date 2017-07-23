@@ -1,0 +1,14 @@
+- hosts: all
+  become: true
+  become_method: sudo
+  roles:
+    - { role: geerlingguy.php, php_packages: php, php_enable_webserver: false }
+  tasks:
+    - name: Install gnome-key-ring
+      apt:
+        name: libgnome-keyring-dev
+        state: present
+    - name: compile the Gnome Keyring devel
+      command: make --directory=/usr/share/doc/git/contrib/credential/gnome-keyring
+    - name: Setup credentials
+      command: git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
