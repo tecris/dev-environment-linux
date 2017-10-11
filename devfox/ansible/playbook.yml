@@ -1,0 +1,72 @@
+- hosts: all
+  become: true
+  become_method: sudo
+  vars:
+    username: tecris
+  tasks:
+    - name: Add user
+      user: name={{username}}
+        shell=/bin/bash
+        password=$6$FLNb9AGuw/2h7k$F1gUtBSLcbx1R3pw1Hou0EVNNNufutwow1kJLijPkc2lUFWAcPTqBBwOYcr7VZ16UDLc6Nb284zJGzQqq0Gfd0
+        groups=sudo
+        append=yes
+      tags:
+        - create-user
+    - name: Install gnome-key-ring
+      apt:
+        name: libgnome-keyring-dev
+        state: present
+    - name: compile the Gnome Keyring devel
+      command: make --directory=/usr/share/doc/git/contrib/credential/gnome-keyring
+    - name: Setup credentials
+      command: git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+      become: yes
+      become_user: "{{username}}"
+    - name: Add php5.6 PPA
+      command: add-apt-repository ppa:ondrej/php
+    - command: apt-get update
+    - command: apt-get -y install curl php5.6 php5.6-xml php5.6-curl php5.6-mysql
+    - name: Install composer
+      command: bash -c "curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer"
+    - name: Aerospike PHP Client
+      command: |
+        bash -c "composer require aerospike/aerospike-client-php5 \"~3.4\""
+        bash -c "find vendor/aerospike/aerospike-client-php5/ -name \"*.sh\" -exec chmod +x {} \ ";
+        bash -c "cd vendor/aerospike/aerospike-client-php5/ && sudo composer run-script post-install-cmd"
+    - name: Installs vim package
+      apt: pkg=vim state=installed update_cache=true
+    - name: Avoid using sudo when using docker command
+      command: usermod -aG docker {{username}}
+    - name: Add user to virtualbox group
+      command: usermod -aG vboxsf {{username}}
+    - name: Configure git email
+      command: git config --global user.email "eugen.c@mobfox.com"
+      become: yes
+      become_user: "{{username}}"
+    - name: Configure git user
+      action: shell git config --global user.name "Eugen Cristea"
+      become: yes
+      become_user: "{{username}}"
+    - name: Configure git editor to vim
+      command: git config --global core.editor "vim"
+      become: yes
+      become_user: "{{username}}"
+    - name: vim configuration file
+      copy: src=files/vimrc dest=/home/{{username}}/.vimrc owner={{username}} mode=0644
+      become: yes
+      become_user: "{{username}}"
+    - file: path=/home/{{username}}/.ssh owner={{username}} group={{username}} state=directory mode=0700
+    - name: ssh config
+      copy: src=files/ssh_config dest=/home/{{username}}/.ssh/config owner={{username}} mode=0644
+      become: yes
+      become_user: "{{username}}"
+    # task marked with tag to be excluded from execution when running in docker ( cannot edit /etc/hosts with ansible )
+    - name: Configure hosts
+      lineinfile:
+        dest: /etc/hosts
+        line: "{{ item.line }}"
+      with_items:
+        - { line: ''}
+        - { line: '127.0.1.1       mobfox.dev' }
+      tags:
+        - no-docker

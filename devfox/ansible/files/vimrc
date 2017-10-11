@@ -1,0 +1,39 @@
+" Formatting and indenting
+" ========================
+
+" Automatic indenting, on new line.
+set autoindent
+
+" Enable C-style indenting.
+set cindent 
+
+" Use white spaces for tab.
+set expandtab
+
+" Smart indenting, based on the typed code.
+set smartindent 
+
+" Tab spacing.
+set tabstop=4 
+set shiftwidth=4
+set softtabstop=4
+
+" Use tabs at the start of a line, spaces elsewhere.
+set smarttab 
+
+" If on Vim will wrap long lines at a character in 'breakat' rather than at the last character that fits on the screen.
+set linebreak
+
+
+" Syntax highlighting and related
+" ===============================
+
+
+" Show matching brackets.
+set showmatch 
+
+" Do not highlight the string we searched.
+set nohlsearch 
+
+" Highlight the searched string, while typing.
+set incsearch
