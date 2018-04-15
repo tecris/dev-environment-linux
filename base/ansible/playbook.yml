@@ -8,7 +8,6 @@
     - role: angstwad.docker_ubuntu
     - role: geerlingguy.git
   tasks:
-    # task marked with tag to be executed only when run in docker (it is expected user tecris already exists when executed in development machine)
     - name: Installs vim package
       apt: pkg=vim state=installed update_cache=true
     - name: Configure git editor to vim
