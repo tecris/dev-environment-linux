@@ -34,3 +34,21 @@
 #### Start box/image
   1. `$ cd demo`
   1. `$ vagrant up`
+
+#### Environment variables
+  ```
+  # ls -l /opt/
+    total 8
+    drwxr-xr-x 6 root   root   4096 Nov 21 17:18 apache-maven-3.8.6
+    lrwxrwxrwx 1 root   root     12 Nov 21 17:13 jdk -> jdk-17.0.5+8
+    drwxr-xr-x 9 tecris tecris 4096 Oct 19 16:56 jdk-17.0.5+8
+    lrwxrwxrwx 1 root   root     18 Nov 21 17:18 maven -> apache-maven-3.8.6
+
+    # cat /etc/profile.d/java.sh
+    export JAVA_HOME=/opt/jdk
+    PATH=${JAVA_HOME}/bin:${PATH}
+
+    # cat /etc/profile.d/maven.sh
+    export MAVEN_HOME=/opt/maven
+    PATH=${MAVEN_HOME}/bin:${PATH}
+  ```
